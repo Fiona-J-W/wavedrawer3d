@@ -1,6 +1,5 @@
 #include "libpicture.hpp"
 #include <string>
-#include <string>
 using namespace std;
 
 #include<cstdio>
@@ -8,6 +7,7 @@ using namespace std;
 #include<stdexcept>
 #include<iostream>
 
+//this is just for testing purposes 
 
 int main(){
 	picture testpic(1680,1050);
