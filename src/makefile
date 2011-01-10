@@ -4,15 +4,15 @@ CC = g++
 CFLAGS = -O3 -Wall -Wextra -pedantic
 
 #TARGET = lib_bmp.so
-TARGET = test
-OBJECTS = color.o libpicture.o point.o test.o
+TARGET = wavedrawer3d
+OBJECTS = color.o libpicture.o point.o main.o settings.o
 
 # link target:
 $(TARGET) : $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
 
-%.o:%.cpp
+%.o:%.cpp %.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
@@ -23,7 +23,9 @@ point.o:point.hpp
 
 libpicture.o:libpicture.hpp color.hpp point.hpp
 
-test.o: test.cpp libpicture.hpp color.hpp
+main.o: libpicture.hpp color.hpp
+
+settings.o: point.hpp
 
 #works only on unix:
 clean:
