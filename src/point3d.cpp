@@ -29,7 +29,7 @@ point3d::point3d(std::string str){
 //there are no setters for single values needed, as x, y and z are public;
 //same reason for the missing of getters
 
-void set(double x,double y,double z){
+void point3d::set(double x,double y,double z){
 /** Set both coordinates **/
 	this->x=x;
 	this->y=y;
