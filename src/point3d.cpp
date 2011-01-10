@@ -20,9 +20,9 @@ point3d::point3d(std::string str){
 	unsigned int divider2;
 	divider1=str.find(":");
 	divider2=str.find(":",divider1+1);
-	x=atoi(str.substr(0,divider1).c_str());
-	y=atoi(str.substr(divider1+1,divider2-divider1-1).c_str());
-	z=atoi(str.substr(divider2).c_str());
+	x=atof(str.substr(0,divider1).c_str());
+	y=atof(str.substr(divider1+1,divider2-divider1-1).c_str());
+	z=atof(str.substr(divider2+1).c_str());
 }
 
 ///Setters:
