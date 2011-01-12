@@ -1,0 +1,1 @@
+waverdrawer3d is a small and fast application to simulate interference of waves in three-dimensional space. You specify the coordinates and properties of one or more stimulators and the corner points of a rectangle. The intensity in the points of this rectangle is calculated and the rectangle is saved as a greyscale picture.
