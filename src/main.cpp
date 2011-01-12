@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char **argv){
 	settings S(argc,argv);
-	cout << "wavedrawer3d" << endl;
+	cout << "wavedrawer3d pre-alpha" << endl;
 	
 	return 0;
 }
