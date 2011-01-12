@@ -9,7 +9,7 @@
 
 ///Constructors:
 
-stimulator::stimulator(double x,double y,double z,double frequency,double amplitude,double start_phase){
+stimulator::stimulator(double x, double y, double z, double frequency, double amplitude, double start_phase){
 /** default constructor **/
 	point3d::point3d(x, y, z);
 	this->frequency=frequency;
@@ -18,9 +18,9 @@ stimulator::stimulator(double x,double y,double z,double frequency,double amplit
 }
 
 ///Member functions:
-double get_elongation(point3d point, double time, settings S){
+double stimulator::get_elongation(point3d point, double time, settings S){
 	double wavelength = S.propagation_speed / frequency;
-	return sin(time*frequency*2*M_PI - 2*M_PI*get_dist_3d(this, point3d)/wavelength + start_phase*M_PI/180);
+	return sin(time*frequency*2*M_PI - 2*M_PI*get_dist_3d(*this, point)/wavelength + start_phase*M_PI/180);
 }
 
 ///Setters:

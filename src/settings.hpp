@@ -1,3 +1,6 @@
+#ifndef __class_settings_hpp__
+#define __class_settings_hpp__
+
 #include <string>
 #include <vector>
 #include "point.hpp"
@@ -25,3 +28,5 @@ class settings{
 		
 		string file;
 };
+
+#endif

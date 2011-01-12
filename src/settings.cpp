@@ -1,3 +1,6 @@
+#ifndef __class_settings_cpp__
+#define __class_settings_cpp__
+
 #include "settings.hpp"
 
 #include <cstdlib>
@@ -46,3 +49,5 @@ settings::settings(int argc, char **argv){
 	}
 	
 }
+
+#endif
