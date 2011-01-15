@@ -44,7 +44,7 @@ settings::settings(int argc, char **argv){
 			file=tempstr.substr(2);
 		}
 		else if(tempstr.substr(0,2)=="-P"){
-			points.push_back(point(tempstr.substr(2)));
+			points.push_back(point3d(tempstr.substr(2)));
 		}
 	}
 	
