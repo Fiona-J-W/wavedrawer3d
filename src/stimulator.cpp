@@ -9,14 +9,14 @@
 
 stimulator::stimulator(double x, double y, double z, double frequency, double amplitude, double start_phase) {
 /** default constructor **/
-	point3d::set(x, y, z);
+	set(x, y, z);
 	this->frequency=frequency;
 	this->amplitude=amplitude;
 	this->start_phase=start_phase;
 }
 
 stimulator::stimulator(std::string str, double frequency, double amplitude, double start_phase) {
-	point3d::set(str);
+	set(str);
 	this->frequency=frequency;
 	this->amplitude=amplitude;
 	this->start_phase=start_phase;
