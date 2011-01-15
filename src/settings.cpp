@@ -2,6 +2,7 @@
 #define __class_settings_cpp__
 
 #include "settings.hpp"
+#include "stimulator.hpp"
 
 #include <cstdlib>
 #include <string>
@@ -44,7 +45,7 @@ settings::settings(int argc, char **argv){
 			file=tempstr.substr(2);
 		}
 		else if(tempstr.substr(0,2)=="-P"){
-			points.push_back(point3d(tempstr.substr(2)));
+			stimulators.push_back(stimulator(tempstr.substr(2)));
 		}
 	}
 	

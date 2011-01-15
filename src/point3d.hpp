@@ -7,6 +7,7 @@ class point3d{
 		point3d(double x=0,double y=0,double z=0);
 		point3d(std::string str);
 		void set(double x,double y,double z);
+		void set(std::string str);
 		double x;
 		double y;
 		double z;

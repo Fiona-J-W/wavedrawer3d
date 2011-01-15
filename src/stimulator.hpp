@@ -2,12 +2,12 @@
 #define __class_stimulator_hpp__
 #include <string>
 #include "point3d.hpp"
-#include "settings.hpp"
 
 class stimulator : public point3d{
 	public:
-		stimulator(double x=0,double y=0,double z=0,double frequency=1,double amplitude=1,double start_phase=0);
-		double get_elongation(point3d point, double time, settings S);
+		stimulator(double x=0, double y=0, double z=0, double frequency=1, double amplitude=1, double start_phase=0);
+		stimulator(std::string str, double frequency=1, double amplitude=1, double start_phase=0);
+		double get_elongation(point3d point, double time, double propagation_speed);
 
 		double frequency;
 		double amplitude;

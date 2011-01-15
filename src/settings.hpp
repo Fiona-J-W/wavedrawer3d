@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "point3d.hpp"
+#include "stimulator.hpp"
 
  /** class settings ******************************************
  *                                                           *
@@ -24,7 +24,7 @@ class settings{
 		unsigned int height;
 		unsigned int number_of_pics;
 		double propagation_speed;
-		vector<point3d> points;
+		vector<stimulator> stimulators;
 		
 		string file;
 };
