@@ -2,8 +2,11 @@
 #define __class_point3d_cpp__
 
 #include "point3d.hpp"
+#include "divide_string.hpp"
+
 #include <cstdlib>
 #include <cmath>
+#include <vector>
 
 ///Constructors:
 
@@ -29,16 +32,10 @@ void point3d::set(double x,double y,double z){
 
 void point3d::set(std::string str){
 /** creates the Point from an inputstring with the form "x:y:z" **/
-	x = 0;
-	y = 0;
-	z = 0;
-	unsigned int divider1 = str.find(":");
-	x = atof(str.substr(0, divider1).c_str());
-	if(divider1 != std::string::npos) {
-		unsigned int divider2 = str.find(":", divider1 + 1);
-		y = atof(str.substr(divider1+1,divider2-divider1-1).c_str());
-		if(divider2 != std::string::npos) { z=atof(str.substr(divider2+1).c_str()); }
-	}
+	vector<double> coord = divide_string(str, 3);
+	x = coord[0];
+	y = coord[1];
+	z = coord[2];
 }
 
 

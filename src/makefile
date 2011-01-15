@@ -1,11 +1,10 @@
-#Makefile for libpicture
+#Makefile for wavedrawer3d
 
 CC = g++
 CFLAGS = -O3 -Wall -Wextra -pedantic
 
-#TARGET = lib_bmp.so
 TARGET = wavedrawer3d
-OBJECTS = color.o libpicture.o point.o point3d.o stimulator.o main.o settings.o
+OBJECTS = color.o libpicture.o point.o point3d.o stimulator.o main.o settings.o divide_string.o
 
 # link target:
 $(TARGET) : $(OBJECTS)
@@ -28,6 +27,8 @@ stimulator.o:stimulator.hpp
 libpicture.o:libpicture.hpp color.hpp point.hpp
 
 main.o: libpicture.hpp color.hpp
+
+divide_string.o:divide_string.hpp
 
 settings.o: point.hpp
 

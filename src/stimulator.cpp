@@ -2,8 +2,11 @@
 #define __class_stimulator_cpp__
 
 #include "stimulator.hpp"
+#include "divide_string.hpp"
+
 #include <cstdlib>
 #include <cmath>
+#include <vector>
 
 ///Constructors:
 
@@ -15,11 +18,14 @@ stimulator::stimulator(double x, double y, double z, double frequency, double am
 	this->start_phase=start_phase;
 }
 
-stimulator::stimulator(std::string str, double frequency, double amplitude, double start_phase) {
-	set(str);
-	this->frequency=frequency;
-	this->amplitude=amplitude;
-	this->start_phase=start_phase;
+stimulator::stimulator(std::string str) {
+	vector<double> values = divide_string(str, 6);
+	x = values[0];
+	y = values[1];
+	z = values[2];
+	frequency = values[3];
+	amplitude = values[4];
+	start_phase = values[5];
 }
 
 ///Member functions:	
