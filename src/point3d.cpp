@@ -29,13 +29,16 @@ void point3d::set(double x,double y,double z){
 
 void point3d::set(std::string str){
 /** creates the Point from an inputstring with the form "x:y:z" **/
-	unsigned int divider1;
-	unsigned int divider2;
-	divider1=str.find(":");
-	divider2=str.find(":",divider1+1);
-	x=atof(str.substr(0,divider1).c_str());
-	y=atof(str.substr(divider1+1,divider2-divider1-1).c_str());
-	z=atof(str.substr(divider2+1).c_str());
+	x = 0;
+	y = 0;
+	z = 0;
+	unsigned int divider1 = str.find(":");
+	x = atof(str.substr(0, divider1).c_str());
+	if(divider1 != std::string::npos) {
+		unsigned int divider2 = str.find(":", divider1 + 1);
+		y = atof(str.substr(divider1+1,divider2-divider1-1).c_str());
+		if(divider2 != std::string::npos) { z=atof(str.substr(divider2+1).c_str()); }
+	}
 }
 
 

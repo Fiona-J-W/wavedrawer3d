@@ -7,9 +7,6 @@
 #include <cstdlib>
 #include <string>
 
-
-using namespace std;
-
 settings::settings(){
 	width=0;
 	height=0;
@@ -48,7 +45,6 @@ settings::settings(int argc, char **argv){
 			stimulators.push_back(stimulator(tempstr.substr(2)));
 		}
 	}
-	
 }
 
 #endif
