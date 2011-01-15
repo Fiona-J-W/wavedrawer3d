@@ -9,8 +9,9 @@
 using namespace std;
 
 int main(int argc, char **argv){
+	cout << endl << "wavedrawer3d pre-Alpha" << endl << endl;
+
 	settings S(argc,argv);
-	cout << "wavedrawer3d pre-alpha" << endl;
 
 	return 0;
 }

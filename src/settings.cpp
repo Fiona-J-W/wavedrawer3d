@@ -6,6 +6,9 @@
 
 #include <cstdlib>
 #include <string>
+#include <iostream>
+
+using namespace std;
 
 settings::settings(){
 	width=0;
@@ -41,9 +44,31 @@ settings::settings(int argc, char **argv){
 		else if(tempstr.substr(0,2)=="-f"){
 			file=tempstr.substr(2);
 		}
-		else if(tempstr.substr(0,2)=="-P"){
+		else if(tempstr.substr(0,2)=="-S"){
 			stimulators.push_back(stimulator(tempstr.substr(2)));
 		}
+	}
+
+	unsigned int n_stimulators = stimulators.size();
+	while(n_stimulators == 0) {
+		cout << "Please enter the number of stimulators (at least 1): ";
+		cin >> n_stimulators;
+	}
+
+	double x, y, z, freq, amp, phase;
+	for(unsigned int i = stimulators.size(); i < n_stimulators; i++) {
+		cout << endl << "Please enter the x coordinate of stimulator #" << i << ": ";
+		cin >> x;
+		cout << "Please enter the y coordinate of stimulator #" << i << ": ";
+		cin >> y;
+		cout << "Please enter the z coordinate of stimulator #" << i << ": ";
+		cin >> z;
+		cout << "Please enter the frequency of stimulator #" << i << ": ";
+		cin >> freq;
+		cout << "Please enter the amplitude (max. 1) of stimulator #" << i << ": ";
+		cin >> amp;
+		cout << "Please enter the phase shift (in degrees) of stimulator #" << i << ": ";
+		cin >> phase;
 	}
 }
 
