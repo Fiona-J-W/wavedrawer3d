@@ -1,7 +1,7 @@
 #ifndef __color_cpp__
 #define __color_cpp__
-#include "color.hpp"
 
+#include "color.hpp"
 
 color_rgb::color_rgb(){
 	m_r=m_g=m_b=0;

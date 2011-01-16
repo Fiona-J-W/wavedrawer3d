@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+
 #include "stimulator.hpp"
 
  /** class settings ******************************************

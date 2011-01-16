@@ -1,5 +1,6 @@
 #ifndef __class_point_hpp__
 #define __class_point_hpp__
+
 #include <string>
 
 class point{

@@ -1,5 +1,6 @@
 #ifndef __class_point3d_hpp__
 #define __class_point3d_hpp__
+
 #include <string>
 
 class point3d{

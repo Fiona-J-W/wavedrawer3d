@@ -1,5 +1,6 @@
 #ifndef __lib_picture_hpp__
 #define __lib_picture_hpp__
+
 #include <vector>
 #include <string>
 

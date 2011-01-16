@@ -1,6 +1,8 @@
 #ifndef __class_stimulator_hpp__
 #define __class_stimulator_hpp__
+
 #include <string>
+
 #include "point3d.hpp"
 
 class stimulator : public point3d{

@@ -1,10 +1,9 @@
 #ifndef __divide_string_cpp__
 #define __divide_string_cpp__
 
-#include <string>
-#include <vector>
-#include <cstdlib>
 #include "divide_string.hpp"
+
+#include <cstdlib>
 
 using namespace std;
 

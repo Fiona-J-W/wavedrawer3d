@@ -1,10 +1,6 @@
-//#include "libpicture.hpp"
-//#include "color.hpp"
 #include "settings.hpp"
-//#include "divide_string.hpp"
 
 #include <iostream>
-//#include <vector>
 
 using namespace std;
 

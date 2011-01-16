@@ -1,6 +1,6 @@
 #ifndef __color_hpp__
 #define __color_hpp__
-#include <cstdio>
+
 class color_rgb{
 	public:
 		color_rgb();

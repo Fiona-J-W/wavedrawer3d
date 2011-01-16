@@ -2,6 +2,7 @@
 #define __class_point_cpp__
 
 #include "point.hpp"
+
 #include <cstdlib>
 #include <cmath>
 

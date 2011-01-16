@@ -5,7 +5,6 @@
 #include "stimulator.hpp"
 
 #include <cstdlib>
-#include <string>
 #include <iostream>
 
 using namespace std;
