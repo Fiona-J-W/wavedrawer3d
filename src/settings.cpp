@@ -69,6 +69,7 @@ settings::settings(int argc, char **argv){
 		cin >> amp;
 		cout << "Please enter the phase shift (in degrees) of stimulator #" << i << ": ";
 		cin >> phase;
+		stimulators.push_back(stimulator(x, y, z, freq, amp, phase));
 	}
 }
 
