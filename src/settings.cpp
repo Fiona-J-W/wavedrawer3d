@@ -25,6 +25,7 @@ settings::settings(int argc, char **argv){
 	height=0;
 	propagation_speed=0;
 	number_of_pics=1;
+	file = "";
 	///analyse the programs parameters:
 	for(int i=1;i<argc;++i){
 		tempstr=argv[i];
@@ -46,6 +47,26 @@ settings::settings(int argc, char **argv){
 		else if(tempstr.substr(0,2)=="-S"){
 			stimulators.push_back(stimulator(tempstr.substr(2)));
 		}
+	}
+
+	if(width == 0) {
+		cout << "Please enter the width of the picture(s) to create: ";
+		cin >> width;
+	}
+
+	if(height == 0) {
+		cout << "Please enter the height of the picture(s) to create: ";
+		cin >> height;
+	}
+
+	if(file == "") {
+		cout << "Please enter the filename of the picture(s) to create: ";
+		cin >> file;
+	}
+
+	if(propagation_speed == 0) {
+		cout << "Please enter the propagation speed of the picture(s) to create: ";
+		cin >> propagation_speed;
 	}
 
 	unsigned int n_stimulators = stimulators.size();
