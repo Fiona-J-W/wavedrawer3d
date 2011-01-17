@@ -12,12 +12,12 @@ using namespace std;
 
 void draw(settings S) {
 	picture pic(S.width, S.height);
-	double time_between_pics = 1 / S.number_of_pics, time = 0, total_elongation = 0;
+	double time_between_pics = 1.0 / S.number_of_pics, time = 0, total_elongation = 0;
 	unsigned int number_of_stimulators = S.stimulators.size();
 	string filename;
 	point3d current_point;
 
-	for(unsigned int i = 0; i < S.number_of_pics; i++) {
+	for(unsigned int i = 1; i <= S.number_of_pics; i++) {
 		for(unsigned int x = 1; x <= S.width; x++) {
 			for(unsigned int y = 1; y <= S.height; y++) {
 				total_elongation = 0;
