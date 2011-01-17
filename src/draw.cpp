@@ -41,7 +41,7 @@ string get_filename(string file, unsigned int i, unsigned int number_of_pics) {
 		throw out_of_range("get_filename(): invalid parameters: i > number_of_pics");
 	}
 
-	unsigned int pos = file.find(".bmp");
+	size_t pos = file.find(".bmp");
 	if(pos == 0 or file == "") {
 		throw invalid_argument("get_filename(): a filename must be specified");
 	} else if(pos != file.npos) {
