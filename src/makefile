@@ -11,7 +11,7 @@ $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
 
-%.o: %.cpp %.hpp
+%.o: %.cpp 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
