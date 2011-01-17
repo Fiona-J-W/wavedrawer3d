@@ -35,15 +35,6 @@ settings.o: settings.hpp
 stimulator.o: stimulator.hpp divide_string.hpp
 
 
-#header files
-draw.hpp: settings.hpp
-
-libpicture.hpp: color.hpp point.hpp
-
-settings.hpp: stimulator.hpp
-
-stimulator.hpp: point3d.hpp
-
 #works only on unix:
 clean:
 	rm *.o
