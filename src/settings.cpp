@@ -2,7 +2,6 @@
 #define __class_settings_cpp__
 
 #include "settings.hpp"
-#include "stimulator.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -65,7 +64,7 @@ settings::settings(int argc, char **argv){
 	}
 
 	if(propagation_speed == 0) {
-		cout << "Please enter the propagation speed of the picture(s) to create: ";
+		cout << "Please enter the propagation speed of the waves: ";
 		cin >> propagation_speed;
 	}
 

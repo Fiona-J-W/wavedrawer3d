@@ -1,5 +1,6 @@
 #ifndef __lib_picture_cpp__
 #define __lib_picture_cpp__
+
 #include "libpicture.hpp"
 
 #include<fstream>

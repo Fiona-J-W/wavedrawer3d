@@ -1,11 +1,11 @@
 #ifndef __lib_picture_hpp__
 #define __lib_picture_hpp__
 
-#include <vector>
-#include <string>
-
 #include "color.hpp"
 #include "point.hpp"
+
+#include <vector>
+#include <string>
 
 using namespace std;
 

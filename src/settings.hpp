@@ -1,10 +1,10 @@
 #ifndef __class_settings_hpp__
 #define __class_settings_hpp__
 
+#include "stimulator.hpp"
+
 #include <string>
 #include <vector>
-
-#include "stimulator.hpp"
 
  /** class settings ******************************************
  *                                                           *

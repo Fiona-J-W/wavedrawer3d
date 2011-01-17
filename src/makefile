@@ -4,33 +4,45 @@ CC = g++
 CFLAGS = -O3 -Wall -Wextra -pedantic
 
 TARGET = wavedrawer3d
-OBJECTS = color.o libpicture.o point.o point3d.o stimulator.o main.o settings.o divide_string.o
+OBJECTS = color.o divide_string.o draw.o libpicture.o point.o point3d.o stimulator.o main.o settings.o
 
 # link target:
-$(TARGET) : $(OBJECTS)
+$(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
 
-%.o:%.cpp %.hpp
+%.o: %.cpp %.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
+#object files
+color.o: color.hpp
 
-color.o:color.hpp
+divide_string.o: divide_string.hpp
 
-point.o:point.hpp
+draw.o: draw.hpp libpicture.hpp
 
-point3d.o:point3d.hpp
+libpicture.o: libpicture.hpp
 
-stimulator.o:stimulator.hpp
+main.o: draw.hpp settings.hpp
 
-libpicture.o:libpicture.hpp color.hpp point.hpp
+point.o: point.hpp
 
-main.o: libpicture.hpp color.hpp
+point3d.o: point3d.hpp divide_string.hpp
 
-divide_string.o:divide_string.hpp
+settings.o: settings.hpp
 
-settings.o: point.hpp
+stimulator.o: stimulator.hpp divide_string.hpp
+
+
+#header files
+draw.hpp: settings.hpp
+
+libpicture.hpp: color.hpp point.hpp
+
+settings.hpp: stimulator.hpp
+
+stimulator.hpp: point3d.hpp
 
 #works only on unix:
 clean:
