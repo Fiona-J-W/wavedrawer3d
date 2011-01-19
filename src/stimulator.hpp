@@ -7,7 +7,7 @@
 
 class stimulator : public point3d{
 	public:
-		stimulator(double x=0, double y=0, double z=0, double frequency=0, double amplitude=0, double start_phase=0);
+		stimulator(double x = 0, double y = 0, double z = 0, double amplitude = 1, double frequency = 1, double start_phase = 0);
 		stimulator(std::string str);
 		double get_elongation(point3d point, double time, double propagation_speed);
 

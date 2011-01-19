@@ -48,47 +48,65 @@ settings::settings(int argc, char **argv){
 		}
 	}
 
-	if(width == 0) {
+	string input;
+
+	while(width == 0) {
 		cout << "Please enter the width of the picture(s) to create: ";
-		cin >> width;
+		getline(cin, input);
+		width = atoi(input.c_str());
 	}
 
-	if(height == 0) {
+	while(height == 0) {
 		cout << "Please enter the height of the picture(s) to create: ";
-		cin >> height;
+		getline(cin, input);
+		height = atoi(input.c_str());
 	}
 
-	if(file == "") {
+	while(file == "") {
 		cout << "Please enter the filename of the picture(s) to create: ";
-		cin >> file;
+		getline(cin, file);
 	}
 
-	if(propagation_speed == 0) {
+	while(propagation_speed == 0) {
 		cout << "Please enter the propagation speed of the waves: ";
-		cin >> propagation_speed;
+		getline(cin, input);
+		propagation_speed = atof(input.c_str());
 	}
 
 	unsigned int n_stimulators = stimulators.size();
 	while(n_stimulators == 0) {
 		cout << "Please enter the number of stimulators (at least 1): ";
-		cin >> n_stimulators;
+		getline(cin, input);
+		n_stimulators = atoi(input.c_str());
 	}
 
 	double x, y, z, freq, amp, phase;
 	for(unsigned int i = stimulators.size(); i < n_stimulators; i++) {
 		cout << endl << "Please enter the x coordinate of stimulator #" << i << ": ";
-		cin >> x;
+		getline(cin, input);
+		x = atof(input.c_str());
+
 		cout << "Please enter the y coordinate of stimulator #" << i << ": ";
-		cin >> y;
+		getline(cin, input);
+		y = atof(input.c_str());
+
 		cout << "Please enter the z coordinate of stimulator #" << i << ": ";
-		cin >> z;
-		cout << "Please enter the frequency of stimulator #" << i << ": ";
-		cin >> freq;
+		getline(cin, input);
+		z = atof(input.c_str());
+
 		cout << "Please enter the amplitude (max. 1) of stimulator #" << i << ": ";
-		cin >> amp;
+		getline(cin, input);
+		amp = atof(input.c_str());
+
+		cout << "Please enter the frequency of stimulator #" << i << ": ";
+		getline(cin, input);
+		freq = atof(input.c_str());
+
 		cout << "Please enter the phase shift (in degrees) of stimulator #" << i << ": ";
-		cin >> phase;
-		stimulators.push_back(stimulator(x, y, z, freq, amp, phase));
+		getline(cin, input);
+		phase = atof(input.c_str());
+
+		stimulators.push_back(stimulator(x, y, z, amp, freq, phase));
 	}
 }
 

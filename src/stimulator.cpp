@@ -10,11 +10,11 @@
 
 ///Constructors:
 
-stimulator::stimulator(double x, double y, double z, double frequency, double amplitude, double start_phase) {
+stimulator::stimulator(double x, double y, double z, double amplitude, double frequency, double start_phase) {
 /** default constructor **/
 	set(x, y, z);
-	this->frequency=frequency;
-	this->amplitude=amplitude;
+	this->amplitude = (amplitude == 0) ? 1 : amplitude;
+	this->frequency = (frequency == 0) ? 1 : frequency;
 	this->start_phase=start_phase;
 }
 
@@ -23,9 +23,12 @@ stimulator::stimulator(std::string str) {
 	x = values[0];
 	y = values[1];
 	z = values[2];
-	frequency = values[3];
-	amplitude = values[4];
+	amplitude = values[3];
+	frequency = values[4];
 	start_phase = values[5];
+
+	amplitude = (amplitude == 0) ? 1 : amplitude;
+	frequency = (frequency == 0) ? 1 : frequency;
 }
 
 ///Member functions:	
