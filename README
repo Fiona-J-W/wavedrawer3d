@@ -1,2 +1,9 @@
 waverdrawer3d is a small and fast application to simulate interference of waves in three-dimensional space.
-You specify the width and height of the output bitmap file and the coordinates and properties of one or more stimulators. The unit of length in wavedrawer3d corresponds to one pixel in the output file. The output picture is a rectangle in the xy plane with the point of origin as its midpoint. The intensity in the points of this rectangle is calculated and saved in a greyscale picture.
+
+You specify the width and height of the output bitmap file and the coordinates and properties of one or more 
+stimulators. The unit of length in wavedrawer3d corresponds to one pixel in the output file. The output 
+picture is a rectangle in the xy plane with the point of origin as its midpoint. The intensity in the points of 
+this rectangle is calculated and saved in a greyscale picture.
+
+Be carefull, for this version is ALPHA! After all it compiles without warning and works without killing the
+system, but any use is on own risk!
