@@ -4,7 +4,7 @@ CC = g++
 CFLAGS = -O3 -Wall -Wextra -pedantic
 
 TARGET = wavedrawer3d
-OBJECTS = color.o divide_string.o draw.o libpicture.o point.o point3d.o stimulator.o main.o settings.o
+OBJECTS = color.o divide_string.o draw.o libpicture.o point.o point3d.o stimulator.o main.o settings.o help.o
 
 # link target:
 $(TARGET): $(OBJECTS)
@@ -34,6 +34,7 @@ settings.o: settings.hpp
 
 stimulator.o: stimulator.hpp divide_string.hpp
 
+help.o: help.hpp
 
 #header files
 draw.hpp: settings.hpp
