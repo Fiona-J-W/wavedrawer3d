@@ -9,11 +9,11 @@ using namespace std;
 
 int main(int argc, char **argv){
 	if(argc==2){
-		if(!strcmp(argv[1],"--help")){
+		if(!strcmp(argv[1],"--help")||!strcmp(argv[1],"-?")){
 		print_help();
 		return 0;
 		}
-		else if(!strcmp(argv[1],"--info")){
+		else if(!strcmp(argv[1],"--info")||!strcmp(argv[1],"--about")){
 			print_about();
 			return 0;
 		}
