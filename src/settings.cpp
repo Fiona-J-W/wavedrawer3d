@@ -108,6 +108,11 @@ settings::settings(int argc, char **argv){
 
 		stimulators.push_back(stimulator(x, y, z, amp, freq, phase));
 	}
+	
+	total_amplitude=0;
+	for(unsigned int i=0;i<stimulators.size();++i){
+		total_amplitude+=stimulators.at(i).amplitude;
+	}
 }
 
 #endif

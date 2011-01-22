@@ -17,18 +17,25 @@ void draw(settings S) {
 	string filename;
 	point3d current_point;
 
-	for(unsigned int i = 1; i <= S.number_of_pics; i++) {
+	for(unsigned int i = 1; i <= S.number_of_pics; i++) {///Frames
+		filename = get_filename(S.file, i, S.number_of_pics);
+		cout << "calcualting... ";
 		for(unsigned int x = 1; x <= S.width; x++) {
 			for(unsigned int y = 1; y <= S.height; y++) {
+				
 				total_elongation = 0;
-				current_point.set((int)x - ((int)S.width + 1) / 2, -((int)y - ((int)S.height + 1) / 2), 0);
+				current_point.set(
+					(int)x - ((int)S.width + 1) / 2, ///xpos
+					((int)y - ((int)S.height + 1) / 2),///ypos
+					0///y=0 
+				);
 				for(unsigned int stimu = 0; stimu < number_of_stimulators; stimu++) {
-					total_elongation += S.stimulators[stimu].get_elongation(current_point, time, S.propagation_speed) / number_of_stimulators;
+					total_elongation += S.stimulators[stimu].get_elongation(current_point, time, S.propagation_speed) / S.total_amplitude;
 				}
-				pic.set_pix(x, y, color_rgb(255 * (total_elongation + 1) / 2));
+				pic.set_pix(x, y, color_rgb(255 * ((total_elongation + 1)/2.0)));
+				
 			}
 		}
-		filename = get_filename(S.file, i, S.number_of_pics);
 		cout << "drawing " << filename << endl;
 		pic.draw_bmp(filename);
 
