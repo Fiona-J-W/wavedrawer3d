@@ -27,7 +27,7 @@ void draw(settings S) {
 				current_point.set(
 					(int)x - ((int)S.width + 1) / 2, ///xpos
 					((int)y - ((int)S.height + 1) / 2),///ypos
-					0///y=0 
+					0///z=0 
 				);
 				for(unsigned int stimu = 0; stimu < number_of_stimulators; stimu++) {
 					total_elongation += S.stimulators[stimu].get_elongation(current_point, time, S.propagation_speed) / S.total_amplitude;
