@@ -25,8 +25,8 @@ void draw(settings S) {
 				
 				total_elongation = 0;
 				current_point.set(
-					(int)x - ((int)S.width + 1) / 2, ///xpos
-					((int)y - ((int)S.height + 1) / 2),///ypos
+					(int)x - ((int)S.width  + 1) / 2, ///xpos
+					(int)y - ((int)S.height + 1) / 2,///ypos
 					0///z=0 
 				);
 				for(unsigned int stimu = 0; stimu < number_of_stimulators; stimu++) {
