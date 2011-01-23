@@ -43,6 +43,12 @@ void draw(settings S) {
 	}
 }
 
+
+
+
+
+
+
 string get_filename(string file, unsigned int i, unsigned int number_of_pics) {
 	if(i > number_of_pics) {
 		throw out_of_range("get_filename(): invalid parameters: i > number_of_pics");

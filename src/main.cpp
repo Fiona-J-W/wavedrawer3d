@@ -22,7 +22,7 @@ int main(int argc, char **argv){
 	
 	cout << endl << "wavedrawer3d Alpha" << endl << endl;
 
-	//get the parameters meansing
+	//get the parameters meaning
 	settings S(argc,argv);
 
 	//draw the files
