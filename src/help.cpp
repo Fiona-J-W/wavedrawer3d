@@ -5,11 +5,11 @@ using namespace std;
 void print_help(){
 	cout
 	<<"Usage: wavedrawer3d [Parameters]\n\n"
-	<<"All parameters are optional; those parameters are available:\n"
+	<<"All parameters are optional; these parameters are available:\n"
 	<<"\t-h expects an integer and sets the height of the pictures\n"
 	<<"\t-w expects an integer and sets the width of the pictures\n"
 	<<"\t-v expects a number and sets the propagation speed\n"
-	<<"\t-f expects a string and sets the path to the outputfile\n"
+	<<"\t-f expects a string and sets the path to the output file\n"
 	<<"\t-S expects a string and adds a stimulator; the string must look like \n"
 	<<"\t\tthis:     x:y:z:amplitude:frequency:startphase\n"
 	<<"\t\tAll values may be floating point numbers. If you give less then\n"
