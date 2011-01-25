@@ -36,7 +36,7 @@ void draw(settings S) {
 				
 			}
 		}
-		cout << "done. drawing... "l;
+		cout << "done. drawing... ";
 		pic.draw_bmp(filename);
 		cout << "done "<< endl;
 		time += time_between_pics;
