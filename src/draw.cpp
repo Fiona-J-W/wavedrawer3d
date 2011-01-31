@@ -19,7 +19,7 @@ void draw(settings S) {
 
 	for(unsigned int i = 1; i <= S.number_of_pics; i++) {///Frames
 		filename = get_filename(S.file, i, S.number_of_pics);
-		cout << "calcualting "<<filename<<"... ";
+		cout << "Calculating "<<filename<<"... ";
 		for(unsigned int x = 1; x <= S.width; x++) {
 			for(unsigned int y = 1; y <= S.height; y++) {
 				
@@ -36,9 +36,9 @@ void draw(settings S) {
 				
 			}
 		}
-		cout << "done. drawing... ";
+		cout << "done. Drawing... ";
 		pic.draw_bmp(filename);
-		cout << "done "<< endl;
+		cout << "done."<< endl;
 		time += time_between_pics;
 	}
 }
