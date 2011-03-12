@@ -7,9 +7,12 @@
 
 using namespace std;
 
-vector<double> divide_string(string str, unsigned int number_of_values, char divider) {
+vector<double> divide_string(
+		string str,
+		unsigned int number_of_values,
+		char divider /* default: ':' */
+	){
 	vector<double> values;
-
 	size_t divider_old = -1;
 	size_t divider_new = -1;
 	bool end_of_string = false;
