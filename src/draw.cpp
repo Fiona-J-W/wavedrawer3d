@@ -7,36 +7,73 @@
 #include <cstdio>
 #include <iostream>
 #include <stdexcept>
+#include <vector>
+
+#include <boost/thread.hpp>
 
 using namespace std;
 
+struct calc_data{
+	int y;
+	double time;
+	unsigned int number_of_stimulators;
+	settings *S;
+	picture *pic;
+};
+
+void calc_line(calc_data data){
+	double total_elongation = 0;
+	point3d current_point;
+	for(unsigned int x = 1; x <= data.S->width; x++){
+		total_elongation = 0;
+		current_point.set(
+			(int)x - ((int)data.S->width  + 1) / 2, ///xpos
+			(int)data.y - ((int)data.S->height + 1) / 2,///ypos
+			0///z=0 
+		);
+		for(unsigned int stimu = 0; stimu < data.number_of_stimulators; stimu++) {
+			total_elongation += data.S->stimulators[stimu].get_elongation(current_point, data.time, data.S->propagation_speed) / data.S->total_amplitude;
+		}
+		data.pic->set_pix(x, data.y, color_rgb(255 * ((total_elongation + 1)/2.0)));
+	}
+}
+
 void draw(settings S) {
 	picture pic(S.width, S.height);
-	double time_between_pics = 1.0 / S.number_of_pics, time = 0, total_elongation = 0;
+	double time_between_pics = 1.0 / S.number_of_pics, time = 0;
 	unsigned int number_of_stimulators = S.stimulators.size();
 	string filename;
-	point3d current_point;
-
+	calc_data Data;
+	Data.S=&S;
+	Data.pic=&pic;
+	
+	///Stuff for using threads:
+	int number_of_threads=boost::thread::hardware_concurrency(), current_thread;
+	vector<boost::thread*> threads;
+	threads.resize(number_of_threads);
+	
+	Data.number_of_stimulators=number_of_stimulators;
+	
 	for(unsigned int i = 1; i <= S.number_of_pics; i++) {///Frames
 		filename = get_filename(S.file, i, S.number_of_pics);
-		cout << "Calculating "<<filename<<"... ";
-		for(unsigned int x = 1; x <= S.width; x++) {
-			for(unsigned int y = 1; y <= S.height; y++) {
-				
-				total_elongation = 0;
-				current_point.set(
-					(int)x - ((int)S.width  + 1) / 2, ///xpos
-					(int)y - ((int)S.height + 1) / 2,///ypos
-					0///z=0 
-				);
-				for(unsigned int stimu = 0; stimu < number_of_stimulators; stimu++) {
-					total_elongation += S.stimulators[stimu].get_elongation(current_point, time, S.propagation_speed) / S.total_amplitude;
-				}
-				pic.set_pix(x, y, color_rgb(255 * ((total_elongation + 1)/2.0)));
-				
-			}
+		cout << "Calculating "<<filename<<"... "<<flush;
+		Data.time=time;
+		for(int y = 1; y <= number_of_threads; y++) {
+			current_thread=y-1;
+			Data.y=y;
+			threads[current_thread]=new boost::thread(calc_line,Data);
 		}
-		cout << "done. Drawing... ";
+		for(unsigned int y = number_of_threads+1; y <= S.height; y++) {
+			current_thread=y%number_of_threads;
+			threads[current_thread]->join();
+			delete threads[current_thread];
+			Data.y=y;
+			threads[current_thread]=new boost::thread(calc_line,Data);
+		}
+		for(int i = 0; i < number_of_threads; ++i) {
+			threads.at(i)->join();
+		}
+		cout << "done. Drawing... "<<flush;
 		pic.draw_bmp(filename);
 		cout << "done."<< endl;
 		time += time_between_pics;

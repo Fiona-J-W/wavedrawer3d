@@ -6,7 +6,7 @@
 #include<fstream>
 #include<cstdio>
 #include<cmath>
-#include <stdexcept>
+#include<stdexcept>
 
 
 picture::picture(int width,int height,color_rgb col){

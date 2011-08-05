@@ -2,17 +2,19 @@
 
 CC = g++
 CFLAGS = -O3 -Wall -Wextra -pedantic
-
+CLIBS = -lboost_thread
+INCLUDES = 
+#-I/usr/include/boost
 TARGET = wavedrawer3d
 OBJECTS = color.o divide_string.o draw.o libpicture.o point.o point3d.o stimulator.o main.o settings.o help.o
 
 # link target:
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o $@
+	$(CC) $(CFLAGS) $(CLIBS) $(OBJECTS) -o $@
 
 
 %.o: %.cpp 
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 
 #object files
