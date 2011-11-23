@@ -27,8 +27,8 @@ void calc_line(calc_data data){
 	for(unsigned int x = 1; x <= data.S->width; x++){
 		total_elongation = 0;
 		current_point.set(
-			(int)x - ((int)data.S->width  + 1) / 2, ///xpos
-			(int)data.y - ((int)data.S->height + 1) / 2,///ypos
+			(int)x - ((int)data.S->width  + 1) / 2, ///xpos, make the origin be in the middle
+			(int)data.y - ((int)data.S->height + 1) / 2,///ypos, same as above
 			0///z=0 
 		);
 		for(unsigned int stimu = 0; stimu < data.number_of_stimulators; stimu++) {
@@ -58,7 +58,7 @@ void draw(settings S) {
 		filename = get_filename(S.file, i, S.number_of_pics);
 		cout << "Calculating "<<filename<<"... "<<flush;
 		Data.time=time;
-		for(int y = 1; y <= number_of_threads; y++) {
+		for(unsigned int y = 1; (int)y <= number_of_threads&&y <= S.height; y++) {
 			current_thread=y-1;
 			Data.y=y;
 			threads[current_thread]=new boost::thread(calc_line,Data);
@@ -79,12 +79,6 @@ void draw(settings S) {
 		time += time_between_pics;
 	}
 }
-
-
-
-
-
-
 
 string get_filename(string file, unsigned int i, unsigned int number_of_pics) {
 	if(i > number_of_pics) {

@@ -8,6 +8,9 @@
 #include<cmath>
 #include<stdexcept>
 
+#include <iostream>
+using namespace std;
+
 
 picture::picture(int width,int height,color_rgb col){
 /** constructor (defaults: width=0, height=0, col=col_white) **/
@@ -80,15 +83,21 @@ int picture::draw_bmp(const char *file){
 	output.write("\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0",20);
 	///BITMAPINFOHEADER-end
 	//////////////////////////////////////////////////////////////////////
-	for(long y(0);y<m_height;++y){
-		for(long x(0);x<m_width;++x){
+	for(int y(0);y<m_height;++y){
+		//cout<<y<<": ";
+		for(int x(0);x<m_width;++x){
 			output.put(m_data.at(x).at(y).get_b());
 			output.put(m_data.at(x).at(y).get_g());
 			output.put(m_data.at(x).at(y).get_r());
+			//cout<<x<<", ";
 		}
-		for(int i(0);i<((m_width*3)%4);++i){
+		//cout<<endl;
+		//cout<<m_width<<"("<<m_width*3<<"; "<<(4-((m_width*3)%4))%4<<"):\t";
+		for(int i(0);i<(4-((m_width*3)%4))%4;++i){
 			output.put(0);
+			//cout<<i<<", ";
 		}
+		//cout<<endl;
 	}
 	output.close();
 	return 0;
@@ -96,11 +105,12 @@ int picture::draw_bmp(const char *file){
 ///private helper functions:
 ///returns one byte from a long number
 inline unsigned char picture::splitter(int number, int bytes){
-	for(int i(1);i<bytes;++i){
-		number-=number/256;
-		number/=256;
-	}
-	return number;
+	unsigned char *ptr;
+	unsigned int num=number;
+	ptr=(unsigned char*)&num;
+	return ptr[bytes-1];
 }
+
+
 
 #endif
