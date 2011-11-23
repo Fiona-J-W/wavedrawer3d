@@ -1,52 +1,48 @@
 #Makefile for wavedrawer3d
 
-CC = g++
-CFLAGS = -O3 -Wall -Wextra -pedantic
-CLIBS = -lboost_thread
+CC = g++ 
+CFLAGS = -O3 -Wall -Wextra -pedantic 
+CLIBS = -lboost_thread 
 INCLUDES = 
 #-I/usr/include/boost
-TARGET = wavedrawer3d
-OBJECTS = color.o divide_string.o draw.o libpicture.o point.o point3d.o stimulator.o main.o settings.o help.o
+BUILDDIR = ../build/
+TARGETNAME =wavedrawer3d
+TARGET = $(BUILDDIR)$(TARGETNAME)
+OBJECTS = $(BUILDDIR)color.o $(BUILDDIR)divide_string.o $(BUILDDIR)draw.o $(BUILDDIR)libpicture.o $(BUILDDIR)point.o $(BUILDDIR)point3d.o $(BUILDDIR)stimulator.o $(BUILDDIR)main.o $(BUILDDIR)settings.o $(BUILDDIR)help.o
+
 
 # link target:
-$(TARGET): $(OBJECTS)
+$(TARGET): $(OBJECTS) 
+	@if test ! -d $(BUILDDIR) ; then mkdir $(BUILDDIR); echo "created $(BUILDDIR)" ; fi
 	$(CC) $(CFLAGS) $(CLIBS) $(OBJECTS) -o $@
 
 
-%.o: %.cpp 
+$(BUILDDIR)%.o: %.cpp 
+	@if test ! -d $(BUILDDIR) ; then mkdir $(BUILDDIR); echo "created $(BUILDDIR)" ; fi
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 
 #object files
-color.o: color.hpp
+$(BUILDDIR)color.o: color.hpp
 
-divide_string.o: divide_string.hpp
+$(BUILDDIR)divide_string.o: divide_string.hpp
 
-draw.o: draw.hpp libpicture.hpp
+$(BUILDDIR)draw.o: draw.hpp libpicture.hpp
 
-libpicture.o: libpicture.hpp
+$(BUILDDIR)libpicture.o: libpicture.hpp
 
-main.o: draw.hpp settings.hpp
+$(BUILDDIR)main.o: draw.hpp settings.hpp
 
-point.o: point.hpp
+$(BUILDDIR)point.o: point.hpp
 
-point3d.o: point3d.hpp divide_string.hpp
+$(BUILDDIR)point3d.o: point3d.hpp divide_string.hpp
 
-settings.o: settings.hpp
+$(BUILDDIR)settings.o: settings.hpp
 
-stimulator.o: stimulator.hpp divide_string.hpp
+$(BUILDDIR)stimulator.o: stimulator.hpp divide_string.hpp
 
-help.o: help.hpp
-
-#header files
-draw.hpp: settings.hpp
-
-libpicture.hpp: color.hpp point.hpp
-
-settings.hpp: stimulator.hpp
-
-stimulator.hpp: point3d.hpp
+$(BUILDDIR)help.o: help.hpp
 
 #works only on unix:
 clean:
-	rm *.o
+	rm $(BUILDDIR)*.o
