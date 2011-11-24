@@ -84,14 +84,20 @@ int picture::draw_bmp(const char *file){
 	///BITMAPINFOHEADER-end
 	//////////////////////////////////////////////////////////////////////
 	for(int y(0);y<m_height;++y){
+		//cout<<y<<": ";
 		for(int x(0);x<m_width;++x){
 			output.put(m_data.at(x).at(y).get_b());
 			output.put(m_data.at(x).at(y).get_g());
 			output.put(m_data.at(x).at(y).get_r());
+			//cout<<x<<", ";
 		}
+		//cout<<endl;
+		//cout<<m_width<<"("<<m_width*3<<"; "<<(4-((m_width*3)%4))%4<<"):\t";
 		for(int i(0);i<(4-((m_width*3)%4))%4;++i){
 			output.put(0);
+			//cout<<i<<", ";
 		}
+		//cout<<endl;
 	}
 	output.close();
 	return 0;

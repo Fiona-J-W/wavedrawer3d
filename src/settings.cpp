@@ -5,6 +5,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -26,25 +27,38 @@ settings::settings(int argc, char **argv){
 	number_of_pics=1;
 	file = "";
 	///analyse the programs parameters:
+	string key, val;
 	for(int i=1;i<argc;++i){
 		tempstr=argv[i];
-		if(tempstr.substr(0,2)=="-w"){
-			width=atoi(tempstr.substr(2).c_str());
+		if(tempstr.size()<2){
+			throw logic_error("invalid argument");
 		}
-		else if(tempstr.substr(0,2)=="-h"){
-			height=atoi(tempstr.substr(2).c_str());
+		key=tempstr.substr(0,2);
+		if(tempstr.size()>2){
+			val=tempstr.substr(2);
 		}
-		else if(tempstr.substr(0,2)=="-n"){
-			number_of_pics=atoi(tempstr.substr(2).c_str());
+		else{
+			++i;
+			val=argv[i];
 		}
-		else if(tempstr.substr(0,2)=="-v"){
-			propagation_speed=atof(tempstr.substr(2).c_str());
+		
+		if(key=="-w"){
+			width=atoi(val.c_str());
 		}
-		else if(tempstr.substr(0,2)=="-f"){
-			file=tempstr.substr(2);
+		else if(key=="-h"){
+			height=atoi(val.c_str());
 		}
-		else if(tempstr.substr(0,2)=="-S"){
-			stimulators.push_back(stimulator(tempstr.substr(2)));
+		else if(key=="-n"){
+			number_of_pics=atoi(val.c_str());
+		}
+		else if(key=="-v"){
+			propagation_speed=atof(val.c_str());
+		}
+		else if(key=="-f"){
+			file=val;
+		}
+		else if(key=="-S"){
+			stimulators.push_back(stimulator(valg));
 		}
 	}
 
