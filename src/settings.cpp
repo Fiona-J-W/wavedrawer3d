@@ -33,7 +33,11 @@ settings::settings(int argc, char **argv){
 		if(tempstr.size()<2){
 			throw logic_error("invalid argument");
 		}
-		key=tempstr.substr(0,2);
+		if(tempstr[0]!='-'){
+			throw logic_error("invalid argument");
+		}
+		char key=tempstr[1];
+		//key=tempstr.substr(0,2);
 		if(tempstr.size()>2){
 			val=tempstr.substr(2);
 		}
@@ -41,24 +45,14 @@ settings::settings(int argc, char **argv){
 			++i;
 			val=argv[i];
 		}
-		
-		if(key=="-w"){
-			width=atoi(val.c_str());
-		}
-		else if(key=="-h"){
-			height=atoi(val.c_str());
-		}
-		else if(key=="-n"){
-			number_of_pics=atoi(val.c_str());
-		}
-		else if(key=="-v"){
-			propagation_speed=atof(val.c_str());
-		}
-		else if(key=="-f"){
-			file=val;
-		}
-		else if(key=="-S"){
-			stimulators.push_back(stimulator(valg));
+		switch(key){
+			case 'w': width=atoi(val.c_str()); break;
+			case 'h': height=atoi(val.c_str()); break;
+			case 'n': number_of_pics=atoi(val.c_str()); break;
+			case 'v': propagation_speed=atof(val.c_str()); break;
+			case 'f': file=val; break;
+			case 'S': stimulators.push_back(stimulator(val)); break;
+			default: throw logic_error("invalid argument");
 		}
 	}
 
