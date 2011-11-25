@@ -2,13 +2,13 @@
 
 CC = g++ 
 CFLAGS = -O3 -Wall -Wextra -pedantic 
-CLIBS = -lboost_thread 
-INCLUDES = 
+CLIBS = -lboost_thread `libpng-config --ldflags` 
+INCLUDES = `libpng-config --cflags` 
 #-I/usr/include/boost
 BUILDDIR = ../build/
 TARGETNAME =wavedrawer3d
 TARGET = $(BUILDDIR)$(TARGETNAME)
-OBJECTS = $(BUILDDIR)color.o $(BUILDDIR)divide_string.o $(BUILDDIR)draw.o $(BUILDDIR)libpicture.o $(BUILDDIR)point.o $(BUILDDIR)point3d.o $(BUILDDIR)stimulator.o $(BUILDDIR)main.o $(BUILDDIR)settings.o $(BUILDDIR)help.o
+OBJECTS = $(BUILDDIR)divide_string.o $(BUILDDIR)draw.o $(BUILDDIR)point.o $(BUILDDIR)point3d.o $(BUILDDIR)stimulator.o $(BUILDDIR)main.o $(BUILDDIR)settings.o $(BUILDDIR)help.o
 
 
 # link target:
@@ -23,13 +23,10 @@ $(BUILDDIR)%.o: %.cpp
 
 
 #object files
-$(BUILDDIR)color.o: color.hpp
 
 $(BUILDDIR)divide_string.o: divide_string.hpp
 
-$(BUILDDIR)draw.o: draw.hpp libpicture.hpp
-
-$(BUILDDIR)libpicture.o: libpicture.hpp
+$(BUILDDIR)draw.o: draw.hpp
 
 $(BUILDDIR)main.o: draw.hpp settings.hpp
 

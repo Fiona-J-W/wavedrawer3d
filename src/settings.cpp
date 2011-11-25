@@ -27,7 +27,7 @@ settings::settings(int argc, char **argv){
 	number_of_pics=1;
 	file = "";
 	///analyse the programs parameters:
-	string key, val;
+	string val;
 	for(int i=1;i<argc;++i){
 		tempstr=argv[i];
 		if(tempstr.size()<2){
@@ -37,7 +37,6 @@ settings::settings(int argc, char **argv){
 			throw logic_error("invalid argument");
 		}
 		char key=tempstr[1];
-		//key=tempstr.substr(0,2);
 		if(tempstr.size()>2){
 			val=tempstr.substr(2);
 		}
@@ -70,7 +69,7 @@ settings::settings(int argc, char **argv){
 		height = atoi(input.c_str());
 	}
 
-	while(file == "") {
+	while(file.empty()) {
 		cout << "Please enter the filename of the picture(s) to create: ";
 		getline(cin, file);
 	}
