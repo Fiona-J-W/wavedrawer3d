@@ -2,7 +2,7 @@
 #define __class_stimulator_hpp__
 
 #include <string>
-#include <list>
+#include <vector>
 #include <utility>
 
 using namespace std;
@@ -18,7 +18,7 @@ class stimulator : public point3d{
 		double frequency;
 		double amplitude;
 		double start_phase; // Phase of the stimulator at time 0 in degrees
-		list<pair<double,double> > active_times; //if this doesn't contain values, it won't habe efects
+		vector<pair<double,double> > active_times; //if this doesn't contain values, it won't habe efects
 };
 
 

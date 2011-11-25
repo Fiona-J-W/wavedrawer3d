@@ -37,12 +37,13 @@ stimulator::stimulator(std::string str) {
 double stimulator::get_elongation(point3d point, double time, double propagation_speed) {
 	double wavelength = propagation_speed / frequency;
 	if(!active_times.empty()){
+		double t=(get_dist_3d(*this,point)/propagation_speed)-time;
 		for(auto range:active_times){
-			if(time>=range.first&&time<=range.second){
+			if(t>=range.first&&t<=range.second){
 				goto regular_end_of_function;
 			}
 		}
-		return 0;
+		return 0.0;
 	}
 	regular_end_of_function: 
 	return amplitude * sin(time*frequency*2*M_PI - 2*M_PI*get_dist_3d(*this, point)/wavelength + start_phase*M_PI/180);
