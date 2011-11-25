@@ -1,7 +1,7 @@
 #Makefile for wavedrawer3d
 
 CC = g++ 
-CFLAGS = -O3 -Wall -Wextra -pedantic 
+CFLAGS = -O3 -Wall -Wextra -pedantic -std=c++0x
 CLIBS = -lboost_thread `libpng-config --ldflags` 
 INCLUDES = `libpng-config --cflags` 
 #-I/usr/include/boost

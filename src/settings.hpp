@@ -26,6 +26,7 @@ class settings{
 		unsigned int number_of_pics;
 		double propagation_speed;
 		double total_amplitude;
+		double runtime;
 		vector<stimulator> stimulators;
 		
 		string file;

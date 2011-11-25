@@ -42,7 +42,13 @@ void calc_line(calc_data data){
 
 void draw(settings S) {
 	png::image<png::gray_pixel> img(S.width, S.height);
-	double time_between_pics = 1.0 / S.number_of_pics, time = 0;
+	double time_between_pics, time = 0;
+	if(S.runtime){
+		time_between_pics = S.runtime / S.number_of_pics;
+	}
+	else{
+		time_between_pics = 1.0 / S.number_of_pics;
+	}
 	unsigned int number_of_stimulators = S.stimulators.size();
 	string filename;
 	calc_data Data;

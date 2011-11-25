@@ -25,6 +25,7 @@ settings::settings(int argc, char **argv){
 	height=0;
 	propagation_speed=0;
 	number_of_pics=1;
+	runtime=0;
 	file = "";
 	///analyse the programs parameters:
 	string val;
@@ -49,6 +50,7 @@ settings::settings(int argc, char **argv){
 			case 'h': height=atoi(val.c_str()); break;
 			case 'n': number_of_pics=atoi(val.c_str()); break;
 			case 'v': propagation_speed=atof(val.c_str()); break;
+			case 't': runtime=atof(val.c_str()); break;
 			case 'f': file=val; break;
 			case 'S': stimulators.push_back(stimulator(val)); break;
 			default: throw logic_error("invalid argument");
