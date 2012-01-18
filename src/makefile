@@ -8,7 +8,7 @@ INCLUDES = `libpng-config --cflags`
 BUILDDIR = ../build/
 TARGETNAME =wavedrawer3d
 TARGET = $(BUILDDIR)$(TARGETNAME)
-OBJECTS = $(BUILDDIR)divide_string.o $(BUILDDIR)draw.o $(BUILDDIR)point.o $(BUILDDIR)point3d.o $(BUILDDIR)stimulator.o $(BUILDDIR)main.o $(BUILDDIR)settings.o $(BUILDDIR)help.o
+OBJECTS = $(BUILDDIR)divide_string.o $(BUILDDIR)draw.o $(BUILDDIR)point3d.o $(BUILDDIR)stimulator.o $(BUILDDIR)main.o $(BUILDDIR)settings.o $(BUILDDIR)help.o
 
 
 # link target:
@@ -30,8 +30,6 @@ $(BUILDDIR)draw.o: draw.hpp
 
 $(BUILDDIR)main.o: draw.hpp settings.hpp
 
-$(BUILDDIR)point.o: point.hpp
-
 $(BUILDDIR)point3d.o: point3d.hpp divide_string.hpp
 
 $(BUILDDIR)settings.o: settings.hpp
@@ -43,3 +41,9 @@ $(BUILDDIR)help.o: help.hpp
 #works only on unix:
 clean:
 	rm $(BUILDDIR)*.o
+
+DOKUDIR =../doku/
+
+doku:
+	@if test ! -d $(DOKUDIR) ; then mkdir $(DOKUDIR); echo "created $(DOKUDIR)" ; fi
+	

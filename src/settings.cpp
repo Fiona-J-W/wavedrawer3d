@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
+#include <getopt.h>
 
 using namespace std;
 
@@ -18,47 +19,43 @@ settings::settings(){
 }
 
 settings::settings(int argc, char **argv){
-	///init variables:
+	//init variables:
 	string tempstr;
-	///set some defaults:
+	//set some defaults:
 	width=0;
 	height=0;
 	propagation_speed=0;
 	number_of_pics=1;
 	runtime=0;
 	file = "";
-	///analyse the programs parameters:
-	string val;
-	for(int i=1;i<argc;++i){
-		tempstr=argv[i];
-		if(tempstr.size()<2){
-			throw logic_error("invalid argument");
-		}
-		if(tempstr[0]!='-'){
-			throw logic_error("invalid argument");
-		}
-		char key=tempstr[1];
-		if(tempstr.size()>2){
-			val=tempstr.substr(2);
-		}
-		else{
-			++i;
-			val=argv[i];
-		}
-		switch(key){
-			case 'w': width=atoi(val.c_str()); break;
-			case 'h': height=atoi(val.c_str()); break;
-			case 'n': number_of_pics=atoi(val.c_str()); break;
-			case 'v': propagation_speed=atof(val.c_str()); break;
-			case 't': runtime=atof(val.c_str()); break;
-			case 'f': file=val; break;
-			case 'S': stimulators.push_back(stimulator(val)); break;
+	
+	static const struct option long_options[] ={
+		{"width", required_argument, 0, 'w'},
+		{"height", required_argument, 0, 'h'},
+		{"number-of-pics", required_argument, 0, 'n'},
+		{"propagation-speed", required_argument, 0, 'v'},
+		{"runtime", required_argument, 0, 't'},
+		{"file", required_argument, 0, 'f'},
+		{"stimulator", required_argument, 0, 'S'},
+	};
+	
+	while(optind < argc){
+		int index=0;//dummy
+		int result = getopt_long(argc, argv,"w:h:n:v:t:f:S:",long_options, &index);
+		if (result == -1) break;
+		switch(result){
+			case 'w': width=atoi(optarg); break;
+			case 'h': height=atoi(optarg); break;
+			case 'n': number_of_pics=atoi(optarg); break;
+			case 'v': propagation_speed=atof(optarg); break;
+			case 't': runtime=atof(optarg); break;
+			case 'f': file=optarg; break;
+			case 'S': stimulators.push_back(stimulator(optarg));  break;
 			default: throw logic_error("invalid argument");
 		}
 	}
-
+	
 	string input;
-
 	while(width == 0) {
 		cout << "Please enter the width of the picture(s) to create: ";
 		getline(cin, input);
@@ -117,6 +114,7 @@ settings::settings(int argc, char **argv){
 
 		stimulators.push_back(stimulator(x, y, z, amp, freq, phase));
 	}
+	
 	
 	total_amplitude=0;
 	for(unsigned int i=0;i<stimulators.size();++i){

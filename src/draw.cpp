@@ -28,9 +28,9 @@ void calc_line(calc_data data){
 	for(unsigned int x = 0; x < data.S->width; x++){
 		total_elongation = 0;
 		current_point.set(
-			(int)x - ((int)data.S->width  + 1) / 2, ///xpos, make the origin be in the middle
-			(int)data.y - ((int)data.S->height + 1) / 2,///ypos, same as above
-			0///z=0 
+			(int)x - ((int)data.S->width  + 1) / 2, //xpos, make the origin be in the middle
+			(int)data.y - ((int)data.S->height + 1) / 2,//ypos, same as above
+			0//z=0 
 		);
 		for(unsigned int stimu = 0; stimu < data.number_of_stimulators; stimu++) {
 			total_elongation += data.S->stimulators[stimu].get_elongation(current_point, data.time, data.S->propagation_speed) / data.S->total_amplitude;
@@ -55,14 +55,14 @@ void draw(settings S) {
 	Data.S=&S;
 	Data.img=&img;
 	
-	///Stuff for using threads:
+	//Stuff for using threads:
 	int number_of_threads=boost::thread::hardware_concurrency(), current_thread;
 	vector<boost::thread*> threads;
 	threads.resize(number_of_threads);
 	
 	Data.number_of_stimulators=number_of_stimulators;
 	
-	for(unsigned int i = 0; i < S.number_of_pics; i++) {///Frames
+	for(unsigned int i = 0; i < S.number_of_pics; i++) {//Frames
 		filename = get_filename(S.file, i, S.number_of_pics);
 		cout << "Calculating "<<filename<<"... "<<flush;
 		Data.time=time;

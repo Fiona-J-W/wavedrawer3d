@@ -8,10 +8,10 @@
 #include <cmath>
 #include <vector>
 
-///Constructors:
+//Constructors:
 
 stimulator::stimulator(double x, double y, double z, double amplitude, double frequency, double start_phase) {
-/** default constructor **/
+
 	set(x, y, z);
 	this->amplitude = (amplitude == 0) ? 1 : amplitude;
 	this->frequency = (frequency == 0) ? 1 : frequency;
@@ -31,9 +31,9 @@ stimulator::stimulator(std::string str) {
 	frequency = (frequency == 0) ? 1 : frequency;
 }
 
-///Member functions:	
 
-///TODO: giving this the correct formula, that takes into consideration the decrease of the amplitude in growing distance
+
+//TODO: giving this the correct formula, that takes into consideration the decrease of the amplitude in growing distance
 double stimulator::get_elongation(point3d point, double time, double propagation_speed) {
 	double wavelength = propagation_speed / frequency;
 	if(!active_times.empty()){
@@ -48,9 +48,5 @@ double stimulator::get_elongation(point3d point, double time, double propagation
 	regular_end_of_function: 
 	return amplitude * sin(time*frequency*2*M_PI - 2*M_PI*get_dist_3d(*this, point)/wavelength + start_phase*M_PI/180);
 }
-
-///Setters:
-//there are no setters for single values needed, as all of them are public;
-//same reason for the missing of getters
 
 #endif

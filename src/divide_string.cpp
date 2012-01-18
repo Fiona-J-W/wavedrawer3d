@@ -13,8 +13,8 @@ vector<double> divide_string(
 		char divider /* default: ':' */
 	){
 	vector<double> values;
-	size_t divider_old = -1;
-	size_t divider_new = -1;
+	size_t divider_old = string::npos;
+	size_t divider_new = string::npos;
 	bool end_of_string = false;
 	for(unsigned int i = 0; i < number_of_values; i++) {
 		divider_old = divider_new;

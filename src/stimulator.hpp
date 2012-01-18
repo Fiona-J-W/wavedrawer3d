@@ -9,6 +9,7 @@ using namespace std;
 
 #include "point3d.hpp"
 
+///stimulators are creating the waves and giving them their properties
 class stimulator : public point3d{
 	public:
 		stimulator(double x = 0, double y = 0, double z = 0, double amplitude = 1, double frequency = 1, double start_phase = 0);

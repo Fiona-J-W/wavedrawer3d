@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
- /** class settings ******************************************
+ /*** class settings *****************************************
  *                                                           *
  * This class contains all the information about the         *
  * settings of the programm                                  *
